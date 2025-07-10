@@ -54,7 +54,7 @@ const ContactUS = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20 px-6">
+    <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20 px-6 w-full">
       <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
         {/* Contact Info */}
         <motion.div
@@ -63,8 +63,8 @@ const ContactUS = () => {
           transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
-            Let's Connect
+          <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+           How  can Help you
           </h2>
           {contactInfo.map((item, i) => (
             <motion.div

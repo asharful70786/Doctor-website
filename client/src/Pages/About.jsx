@@ -1,28 +1,20 @@
-import {  Globe,  MapPin, Phone, Users, Calendar } from 'lucide-react'
 import Specializations from '../components/Specializations'
 import Training_Education from '../components/Training_Education'
 import PerSonalStory from '../components/PerSonalStory'
+import { Phone } from 'lucide-react'
 
 function About() {
   return (
-    <section id="about" className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-800 mb-6">About Dr. Amit Roy</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Get to know the person behind the stethoscope - his journey, philosophy, and dedication to pediatric medicine
-          </p>
-        </div>
+    <section id="about" className=" bg-white w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full ">    
 
-        {/* Personal Story Section */}
+       
        <PerSonalStory />
 
-        {/* Education & Training Timeline */}
+      
       <Training_Education />
 
-        {/* Specializations */}
+       
        <Specializations />
 
         {/* Personal Interests */}
@@ -64,17 +56,7 @@ function About() {
           </div>
         </div>
 
-        {/* Contact CTA */}
-        {/* <div className="text-center mt-16">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">Ready to Meet Dr. Roy?</h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-            Schedule a consultation to experience personalized, compassionate pediatric care for your child.
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors inline-flex items-center space-x-2">
-            <Phone className="w-5 h-5" />
-            <span>Book Appointment</span>
-          </button>
-        </div> */}
+       
       </div>
     </section>
   )

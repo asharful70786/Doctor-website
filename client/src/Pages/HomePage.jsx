@@ -7,6 +7,7 @@ import ContactUS from "../components/Contact";
 import Location from "../components/Location";
 import FloatingButtons from "../components/FloatingButton";
 import Appointment from "../components/Appointment";
+import Gallery from "../components/Gallery";
 
 
 
@@ -22,6 +23,7 @@ function Homepage() {
       {/* <About /> */}
         <Services />       
         <ContactUS />
+        <Gallery />
          <Testimonial />
        
          {/* <Appointment /> */}
