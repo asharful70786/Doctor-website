@@ -36,7 +36,7 @@ const ContactUS = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      const res = await fetch("http://localhost:5000/api/sendMail", {
+      const res = await fetch("https://doctor-website-server.vercel.app/api/sendMail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

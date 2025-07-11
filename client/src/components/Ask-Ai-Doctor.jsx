@@ -20,7 +20,7 @@ function Ask_Ai_Doctor() {
     "When should I bring my child for checkup?",
      "How to handle fever in children?",
     "What are Dr. Roy's consultation hours?",
-    "How to book a pediatric appointment?"
+    " book a appointment?"
   ];
 
   async function askAi() {
@@ -37,7 +37,7 @@ function Ask_Ai_Doctor() {
     setIsTyping(true);
 
     try {
-      let response = await fetch("http://localhost:5000/api/ask-doctor", {
+      let response = await fetch("https://doctor-website-server.vercel.app/api/ask-doctor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
