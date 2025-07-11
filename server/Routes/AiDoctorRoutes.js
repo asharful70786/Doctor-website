@@ -1,19 +1,39 @@
-import { sanitizeInput, sanitizeOutput } from "../utils/sanitize.js";
+import express from "express";
 import { askGeminiDoctor } from "../Services/Ai_DoctorServices.js";
+import { sanitizeInput, sanitizeOutput } from "../utils/sanitize.js";
+import Chat from "../Models/ChatModel.js";
+
+
+const router = express.Router();
 
 router.post("/ask-doctor", async (req, res) => {
   const rawMessage = req.body.message;
+
   if (!rawMessage || rawMessage.trim() === "") {
     return res.status(400).json({ error: "Message is required" });
   }
+
   const message = sanitizeInput(rawMessage);
   try {
-    const aiResponse = await askGeminiDoctor(message);
-    const reply = sanitizeOutput(aiResponse);
-    res.json({ reply });
+    const reply = await askGeminiDoctor(message);
+    const cleanReply = sanitizeOutput(reply);
+
+    //  Save only general medical queries (not appointment messages)
+    const isAppointmentQuery = /appointment|available|timing|book|kab milenge|kobe/i.test(message);
+    if (!isAppointmentQuery) {
+      await Chat.create({ message ,  repliedByAi: cleanReply });
+    }
+
+    res.json({ reply: cleanReply });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+export default router;
+
+
+
+
 
 

@@ -5,8 +5,11 @@ import cors from "cors";
 
 import mailRoutes from "./Routes/MailRoutes.js";
 import geminiRouter from "./Routes/AiDoctorRoutes.js";
+import connectDB from "./config/db.js";
 
 const app = express();
+
+connectDB();
 
 // console.log(geminiRouter)
 app.get("/", (req, res) => {
