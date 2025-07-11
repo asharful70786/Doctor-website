@@ -1,6 +1,6 @@
-import LandingPage from "./Landingpage";
-import Banner from "./Banner";
 
+import Banner from "./Banner";
+import LandingPage from "./LandingPage"; 
 import Services from "../components/Services";
 import Testimonial from "../components/Testimonial";
 import ContactUS from "../components/Contact";
