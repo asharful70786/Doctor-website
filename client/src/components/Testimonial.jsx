@@ -12,7 +12,7 @@ const testimonials = [
     role: 'Mother of 2',
     location: 'Kolkata',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b332c1cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+    image: 'https://images.pexels.com/photos/31158645/pexels-photo-31158645.jpeg',
     text: 'Dr. Amit Roy has been our family pediatrician for over 3 years. His gentle approach with children and thorough explanations to parents make every visit comfortable. My kids actually look forward to seeing him!',
     highlight: 'Gentle approach with children'
   },

@@ -75,7 +75,7 @@ const Footer = () => {
             <div className="footer-section">
               <h4 className="footer-subtitle">Contact</h4>
               <ul className="contact-info">
-                <li><FaMapMarkerAlt /><span> Shyamnagar, Kolkata - 700055</span></li>
+                <li><FaMapMarkerAlt /><span> New Goria, Kolkata - 700055</span></li>
                 <li><FaPhoneAlt /><span>+91 99999 00000</span></li>
                 <li><FaEnvelope /><span>clinic.demo@gmail.com</span></li>
                 <li><FaClock /><span>Mon–Fri: 9 AM – 8 PM<br />Sat–Sun: 10 AM – 6 PM</span></li>

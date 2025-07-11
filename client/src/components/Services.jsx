@@ -71,7 +71,7 @@ const services = [
     ],
     price: "₹1,000 - ₹1,500",
     duration: "60-90 mins",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/6203462/pexels-photo-6203462.jpeg",
     color: "from-indigo-500 to-purple-500"
   },
   {

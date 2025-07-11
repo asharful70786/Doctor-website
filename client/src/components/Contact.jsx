@@ -11,7 +11,7 @@ const ContactUS = () => {
   const contactInfo = [
     { icon: FaEnvelope, label: "Email", value: "clinic.demo@gmail.com" },
     { icon: FaPhoneAlt, label: "Call", value: "+91 7076091389" },
-    { icon: FaMapMarkerAlt, label: "Visit", value: "CoderCamp HQ\nShyamnagar, Kolkata" },
+    { icon: FaMapMarkerAlt, label: "Visit", value: "CoderCamp HQ\nNew Goria, Kolkata" },
   ];
 
   const handleChange = (e) => {
