@@ -33,8 +33,10 @@ This is not a substitute for medical care. Please consult a doctor for personali
   }
 
   // Call Gemini only for medical queries
-  const chat = model.startChat();
+  const chat = await model.startChat();
   const result = await chat.sendMessage(userMessage);
   const response = await result.response;
   return response.text();
 };
+
+

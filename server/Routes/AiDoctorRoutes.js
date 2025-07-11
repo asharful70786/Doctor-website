@@ -25,7 +25,7 @@ router.post("/ask-doctor", Limiter ,  async (req, res) => {
       await Chat.create({ message ,  repliedByAi: cleanReply });
     }
 
-    res.json({ reply: cleanReply });
+   return  res.json({ reply: cleanReply });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

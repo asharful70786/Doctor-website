@@ -4,8 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const sendMailService = async (name, email, phone, subject, message) => {
-  console.log("Sending patient inquiry to doctor:", { name, email, phone, subject });
-
+  
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
