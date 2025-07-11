@@ -17,12 +17,10 @@ app.use(cors());
 app.use(express.json())
 
 
-// app.use("/api", mailRoutes);
-// app.use("/api", geminiRouter);
+app.use("/api", mailRoutes);
+app.use("/api", geminiRouter);
 
 app.use("/api", geminiRouter)
-
-
 
 
 
