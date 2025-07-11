@@ -11,7 +11,6 @@ const app = express();
 
 connectDB();
 
-// console.log(geminiRouter)
 app.get("/", (req, res) => {
   res.send("hello")
 })
