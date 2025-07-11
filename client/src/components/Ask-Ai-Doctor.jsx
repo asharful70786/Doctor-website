@@ -37,20 +37,22 @@ function Ask_Ai_Doctor() {
     setIsTyping(true);
 
     try {
-      let response = await fetch("http://localhost:5000/ask-ai-doctor", {
+      let response = await fetch("http://localhost:5000/api/ask-doctor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ question })
+        body: JSON.stringify({message: question})
       });
 
+      
       let data = await response.json();
+      console.log(data)
       
       setTimeout(() => {
         const aiMessage = { 
           sender: 'ai', 
-          text: data.answer || 'I apologize, but I\'m having trouble processing your request. Please contact  clinic directly for immediate assistance.',
+          text: data.reply || 'I apologize, but I\'m having trouble ',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         };
         setMessages((prev) => [...prev, aiMessage]);
