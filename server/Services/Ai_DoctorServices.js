@@ -8,7 +8,7 @@ export const askGeminiDoctor = async (userMessage) => {
     "appointment", "available", "availability", "when can i come", "timing",
     "book", "fix", "reserve", "visit doctor", "see doctor", "clinic open",
     "doctor available", "kab milenge", "milna hai", "doctor kab milenge",
-    "doktor kobe", "doktor kobe paben", "dekha korte chai", "appointment chai"
+    "docror kobe", "doctor kobe asben", "book koro ", "appointment chai" , "consultation", "kobe"
   ];
 
   const isAppointmentQuery = appointmentKeywords.some(keyword =>

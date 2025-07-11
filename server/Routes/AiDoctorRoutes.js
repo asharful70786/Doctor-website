@@ -2,11 +2,12 @@ import express from "express";
 import { askGeminiDoctor } from "../Services/Ai_DoctorServices.js";
 import { sanitizeInput, sanitizeOutput } from "../utils/sanitize.js";
 import Chat from "../Models/ChatModel.js";
+import Limiter from "../utils/limiter.js";
 
 
 const router = express.Router();
 
-router.post("/ask-doctor", async (req, res) => {
+router.post("/ask-doctor", Limiter ,  async (req, res) => {
   const rawMessage = req.body.message;
 
   if (!rawMessage || rawMessage.trim() === "") {
@@ -19,7 +20,7 @@ router.post("/ask-doctor", async (req, res) => {
     const cleanReply = sanitizeOutput(reply);
 
     //  Save only general medical queries (not appointment messages)
-    const isAppointmentQuery = /appointment|available|timing|book|kab milenge|kobe/i.test(message);
+    const isAppointmentQuery = /appointment|available|timing|book|consultation|kab milenge|kobe/i.test(message);
     if (!isAppointmentQuery) {
       await Chat.create({ message ,  repliedByAi: cleanReply });
     }
