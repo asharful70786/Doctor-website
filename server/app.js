@@ -1,5 +1,4 @@
 
-
 import express from "express";
 import cors from "cors";  
 
@@ -11,17 +10,17 @@ const app = express();
 
 connectDB();
 
-app.get("/", (req, res) => {
-  res.send("hello")
-})
-
-const cors = require("cors");
 
 app.use(cors({
   origin: ["https://doctorweb.ashraful.in", "https://dental.ashraful.in"],
 }));
 
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("hello")
+})
+
+
 
 
 
