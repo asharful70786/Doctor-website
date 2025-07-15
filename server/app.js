@@ -15,12 +15,14 @@ app.get("/", (req, res) => {
   res.send("hello")
 })
 
-app.use(cors(
-  {
-    origin: "https://doctorweb.ashraful.in"
-  }
-));
-app.use(express.json())
+const cors = require("cors");
+
+app.use(cors({
+  origin: ["https://doctorweb.ashraful.in", "https://dental.ashraful.in"],
+}));
+
+app.use(express.json());
+
 
 
 app.use("/api", mailRoutes);
