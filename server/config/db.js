@@ -3,7 +3,10 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect("mongodb://localhost:27017/coder-camp");
+    const conn = await mongoose.connect(process.env.MongoDB_url, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
 
     console.log(`MongoDB Connected Successfully`);
   } catch (error) {
