@@ -34,7 +34,7 @@ function FloatingButtons() {
   };
 
   const startAIChat = () => {
-    navigate("/appointment");
+    navigate("/ai-doctor");
   };
 
   const callPhone = () => {
