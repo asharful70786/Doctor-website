@@ -6,8 +6,8 @@ import Limiter from "../utils/limiter.js";
 
 
 const router = express.Router();
-
-router.post("/ask-doctor", Limiter ,  async (req, res) => {
+// i will apply a rate limiter to prevent the api from being called too often
+router.post("/ask-doctor",   async (req, res) => {
   const rawMessage = req.body.message;
 
   if (!rawMessage || rawMessage.trim() === "") {
