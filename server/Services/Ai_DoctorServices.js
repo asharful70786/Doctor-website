@@ -8,18 +8,18 @@ export const askGeminiDoctor = async (userMessage) => {
     "appointment", "available", "availability", "when can i come", "timing",
     "book", "fix", "reserve", "visit doctor", "see doctor", "clinic open",
     "doctor available", "kab milenge", "milna hai", "doctor kab milenge",
-    "docror kobe", "doctor kobe asben", "book koro ", "appointment chai" , "consultation", "kobe"
+    "docror kobe", "doctor kobe asben", "book koro ", "appointment chai",
+    "consultation", "kobe"
   ];
 
   const isAppointmentQuery = appointmentKeywords.some(keyword =>
     messageLower.includes(keyword)
   );
 
-  // Log intent for debugging/analytics
   const intent = isAppointmentQuery ? "appointment_query" : "general_health_query";
   console.log(`[AI-DOCTOR] Detected Intent: ${intent} | Message: ${userMessage}`);
 
-  // Short-circuit appointment answers (no Gemini API call)
+  // Short-circuit appointment answers (no API call)
   if (isAppointmentQuery) {
     return `
 - Dr. Amit Roy is available Monday to Wednesday and Friday to Saturday.  
@@ -32,11 +32,10 @@ This is not a substitute for medical care. Please consult a doctor for personali
     `.trim();
   }
 
-  // Call Gemini only for medical queries
-  const chat = await model.startChat();
-  const result = await chat.sendMessage(userMessage);
-  const response = await result.response;
-  return response.text();
+  // Call OpenAI for medical queries
+  const chat = model.startChat();
+  const response = await chat.sendMessage(userMessage);
+
+  // With the OpenAI wrapper we built, response is already plain text
+  return response;
 };
-
-

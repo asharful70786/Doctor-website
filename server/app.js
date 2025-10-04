@@ -12,7 +12,7 @@ connectDB();
 
 
 app.use(cors({
-  origin: ["https://doctorweb.ashraful.in", "https://dental.ashraful.in"],
+  origin: ["https://doctorweb.ashraful.in", "https://dental.ashraful.in" , "http://localhost:5173"],
 }));
 
 app.use(express.json());

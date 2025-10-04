@@ -1,23 +1,25 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import OpenAI from "openai";
 import dotenv from "dotenv";
 dotenv.config();
 
-const API_KEYS = [
-  process.env.GEMINI_KEY_1,
-  process.env.GEMINI_KEY_2,
-  process.env.GEMINI_KEY_3,
-  // wil more keys if needed 
-];
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-let currentKeyIndex = 0;
 
-const getModel = (apiKey) => {
-  const genAI = new GoogleGenerativeAI(apiKey);
 
-  return genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    generationConfig: { maxOutputTokens: 250 },
-    systemInstruction: `
+const getClient = (apiKey) => new OpenAI({ apiKey });
+
+const getModel = (apiKey) => ({
+  startChat: () => ({
+    async sendMessage(userMessage) {
+      const client = getClient(apiKey);
+      const completion = await client.chat.completions.create({
+        model: "gpt-4o-mini", 
+        messages: [
+          {
+            role: "system",
+            content: `
 You are an AI medical assistant with over 5 years of clinical experience, supporting doctors and medical professors. 
 You speak in a calm, professional, and empathetic tone.
 
@@ -51,32 +53,21 @@ You speak in a calm, professional, and empathetic tone.
 
 ⚠️ Always end each answer with this:
 “This is not a substitute for medical care. Please consult a doctor for personalized advice.”
-`
-  });
-};
+            `,
+          },
+          { role: "user", content: userMessage },
+        ],
+      });
 
-//  Wrapped model with failover logic
+      return completion.choices[0].message.content;
+    },
+  }),
+});
+
+
 export const model = {
-  startChat: async () => {
-    let attempts = 0;
-
-    while (attempts < API_KEYS.length) {
-      const currentKey = API_KEYS[currentKeyIndex];
-      const instance = getModel(currentKey);
-
-      try {
-        return await instance.startChat();
-      } catch (err) {
-        if (err.message.includes("429")) {
-          console.warn(`[Gemini] API key ${currentKeyIndex + 1} quota exceeded. Switching...`);
-          currentKeyIndex = (currentKeyIndex + 1) % API_KEYS.length;
-          attempts++;
-          await new Promise(res => setTimeout(res, 400)); // wait 0.4 seconds
-        } else {
-          throw err; // other errors
-        }
-      }
-    }
-    throw new Error("All Gemini API keys have exceeded their daily limits.");
-  }
+  startChat: () => {
+    const apiKey = process.env.OPENAI_API_KEY;
+    return getModel(apiKey).startChat();
+  },
 };
